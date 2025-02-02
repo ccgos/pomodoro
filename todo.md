@@ -1,0 +1,1 @@
+[ ] Add better colors and styling to this app
