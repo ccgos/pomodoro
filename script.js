@@ -92,8 +92,9 @@ class PomodoroTimer {
         // Update the time
         this.timeLeft = this.isWorkTime ? this.workTime : this.breakTime;
         
-        // Update the mode button
-        this.modeBtn.textContent = this.isWorkTime ? 'Switch to Rest' : 'Switch to Work';
+        // Update the mode button icon
+        const modeIcon = this.modeBtn.querySelector('i');
+        modeIcon.className = this.isWorkTime ? 'fas fa-moon' : 'fas fa-sun';
         this.modeBtn.className = this.isWorkTime ? 'work-btn' : 'rest-btn';
         
         // Reset the start button with appropriate color
