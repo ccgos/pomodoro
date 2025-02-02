@@ -48,10 +48,15 @@ class PomodoroTimer {
         this.timeLeft = this.workTime;
         this.startBtn.textContent = 'Start';
         this.startBtn.className = 'work-btn';
-        this.modeBtn.textContent = 'Switch to Rest';
+        
+        // Update mode button icon instead of text
+        const modeIcon = this.modeBtn.querySelector('i');
+        modeIcon.className = 'fas fa-moon';
         this.modeBtn.className = 'work-btn';
+        
         this.updateDisplay();
         this.statusDisplay.textContent = 'Time to focus!';
+        this.updateTitle();
     }
 
     updateTimer() {
@@ -71,10 +76,12 @@ class PomodoroTimer {
         const minutes = Math.floor(this.timeLeft / 60);
         const seconds = this.timeLeft % 60;
         this.timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        this.updateTitle();
     }
 
     updateStatus() {
         this.statusDisplay.textContent = this.isWorkTime ? 'Time to focus!' : 'Take a break!';
+        this.updateTitle();
     }
 
     playNotification() {
@@ -104,6 +111,15 @@ class PomodoroTimer {
         // Update the display
         this.updateDisplay();
         this.updateStatus();
+        this.updateTitle();
+    }
+
+    updateTitle() {
+        const minutes = Math.floor(this.timeLeft / 60);
+        const seconds = this.timeLeft % 60;
+        const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        const mode = this.isWorkTime ? 'Work' : 'Break';
+        document.title = `${timeString} - ${mode} | Pomodoro Timer`;
     }
 }
 
