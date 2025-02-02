@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --start-work: #1E40AF;  /* Dark blue for work */
+            --rest: #60A5FA;        /* Light blue for rest */
+            --pause: #FFB020;       /* Warning yellow */
+            --reset: #94A3B8;       /* Neutral gray */
+            --disabled: #1E3A8A;    /* Light gray */
+            --work: #1E3A8A;        /* Darker blue for work mode button */
+            --background: #F8F9FD;
+            --surface: #FFFFFF;
+            --text: #1A1B1F;
+            --text-secondary: #1E3A8A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        .timer-container {
+            text-align: center;
+            padding: 3rem;
+            background-color: var(--surface);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        #time {
+            font-size: 5rem;
+            font-weight: 500;
+            margin: 1.5rem 0;
+            color: var(--text);
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+
+        #status {
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            background-color: #F1F5F9;  /* Light grey background */
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        button:disabled {
+            background-color: var(--disabled);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.7;
+        }
+
+        button:not(:disabled):hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        button.work-btn {
+            color: var(--start-work);  /* Dark blue text for work mode */
+        }
+
+        button#modeBtn.work-btn {
+            color: var(--work);  /* Darker blue text for mode button */
+        }
+
+        button.reset-btn {
+            color: var(--text-secondary);
+        }
+
+        #startBtn.rest-mode {
+            color: var(--rest);  /* Light blue text for rest mode */
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Pomodoro Timer</h1>
+        <div id="time">25:00</div>
+        <div id="status">Time to focus!</div>
+        <div class="button-group">
+            <button id="startBtn" class="work-btn">Start</button>
+            <button id="modeBtn" class="work-btn">Switch to Rest</button>
+            <button id="resetBtn" class="reset-btn">Reset</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
